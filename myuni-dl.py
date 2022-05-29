@@ -48,7 +48,8 @@ from robobrowser import RoboBrowser
 import re
 import urllib.parse as urlparse
 
-courseModulesUrl = 'https://ccsf.instructure.edu./courses/' + args.course + '/modules'
+courseModulesUrl = 'https://ccsf.instructure.com/courses/' + args.course + '/modules'
+print(courseModulesUrl)
 browser = RoboBrowser(history=True, parser='html.parser')
 browser.open(courseModulesUrl)
 # Handle login page

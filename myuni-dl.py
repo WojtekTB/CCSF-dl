@@ -46,15 +46,15 @@ werkzeug.cached_property = werkzeug.utils.cached_property
 # Start scraping
 from robobrowser import RoboBrowser
 import re
-import urlparse
+import urllib.parse as urlparse
 
-courseModulesUrl = 'https://myuni.adelaide.edu.au/courses/' + args.course + '/modules'
+courseModulesUrl = 'https://ccsf.instructure.edu./courses/' + args.course + '/modules'
 browser = RoboBrowser(history=True, parser='html.parser')
 browser.open(courseModulesUrl)
 # Handle login page
-form = browser.get_form(id='fm1')
-form["username"] = args.username
-form["password"] = args.password
+form = browser.get_form(id='ctl00')
+form["frmLogin$UserName"] = args.username
+form["frmLogin$Password"] = args.password
 browser.session.headers['Referer'] = args.course
 browser.submit_form(form)
 # Get course name (no special characters)
